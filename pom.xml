@@ -3,7 +3,7 @@
 	<groupId>com.mkyong</groupId>
 	<artifactId>CounterWebApp</artifactId>
 	<packaging>war</packaging>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<name>CounterWebApp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
@@ -76,7 +76,7 @@
         <connection>scm:git:git@github.com:gdascalu/CounterWebApp.git</connection>
         <url>scm:git:git@github.com:gdascalu/CounterWebApp.git</url>
         <developerConnection>scm:git:git@github.com:gdascalu/CounterWebApp.git</developerConnection>
-      <tag>CounterWebApp-1.0</tag>
+      <tag>HEAD</tag>
   </scm>
 
 </project>
