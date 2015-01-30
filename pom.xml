@@ -62,6 +62,21 @@
 				<version>${jetty.version}</version>
 			</plugin>
 
+            <!-- maven release plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.1</version>
+            </plugin>
+
+
 		</plugins>
 	</build>
+
+    <scm>
+        <connection>scm:git:git@github.com:gdascalu/CounterWebApp.git</connection>
+        <url>scm:git:git@github.com:gdascalu/CounterWebApp.git</url>
+        <developerConnection>scm:git:git@github.com:gdascalu/CounterWebApp.git</developerConnection>
+    </scm>
+
 </project>
