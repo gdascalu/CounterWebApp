@@ -12,6 +12,7 @@
 		<junit.version>4.11</junit.version>
 		<jdk.version>1.6</jdk.version>
 		<jetty.version>8.1.8.v20121106</jetty.version>
+        <app.home>/opt/app/</app.home>
 	</properties>
 
 	<dependencies>
@@ -66,6 +67,66 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.1</version>
+            </plugin>
+
+            <!-- maven rpm plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <copyright>2010, NoBody</copyright>
+                    <group>Development</group>
+                    <description>Maven Recipe: RPM Package.</description>
+                    <!-- need to use the build number plugin here in order for yum upgrade to work in snapshots -->
+                    <release>${buildNumber}</release>
+                    <mappings>
+                        <mapping>
+                            <directory>${app.home}/lib/</directory>
+                            <dependency/>
+                            <artifact/>
+                        </mapping>
+                        <mapping>
+                            <directory>${app.home}/conf</directory>
+                            <configuration>true</configuration>
+                            <sources>
+                                <source>
+                                    <location>${project.build.outputDirectory}/app.properties</location>
+                                    <destination>app.sample.properties</destination>
+                                </source>
+                            </sources>
+                        </mapping>
+                        <mapping>
+                            <directory>${app.home}/logs</directory>
+                        </mapping>
+                    </mappings>
+                </configuration>
+            </plugin>
+
+            <!-- build number plugin configuration -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <doCheck>true</doCheck>
+                    <doUpdate>true</doUpdate>
+                </configuration>
             </plugin>
 
 
